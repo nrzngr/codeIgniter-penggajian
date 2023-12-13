@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Lupa Password</title>
     <style>
         html {
             height: 100%;
@@ -94,7 +94,7 @@
             background: linear-gradient(#141e30, #243b55);
         }
 
-        .login-box form #register { 
+        .login-box form #register {
             position: relative;
             display: inline-block;
             padding: 10px 20px;
@@ -213,33 +213,27 @@
 
 <body>
     <div class="login-box">
-        <h2>Login</h2>
-        <form class="user" method="POST" action="<?php echo base_url('welcome') ?>">
+        <h2>Lupa Password</h2>
+        <form method="POST" action="<?= base_url('autentifikasi/resetPassword') ?>">
+            
+            
             <div class="user-box">
-                <input type="text" name="username" required="">
+                <input type="email" name="email" required>
                 <div class="required">
-                    <?php echo form_error('username') ?>
+                    <?php echo form_error('email') ?>
                 </div>
-                <label>Username</label>
+                <label>email</label>
             </div>
-            <div class="user-box">
-                <input type="password" name="password" required="">
-                <div class="required">
-                    <?php echo form_error('password') ?>
-                </div>
-                <label>Password</label>
-                <p><a href="<?= base_url('autentifikasi/lupaPassword') ?>">Lupa Password?</a></p>
-            </div>
+
+            
             <button type="submit" id="submit">
                 <span></span>
                 <span></span>
                 <span></span>
                 <span></span>
-                Submit
+                Reset
             </button>
-
-                <p>Dont have an account? <a href="<?= base_url('autentifikasi/registrasi')?>" class="signUpBtn-link">Register</a></p>      
-    </form>       
+        </form>
     </div>
 </body>
 

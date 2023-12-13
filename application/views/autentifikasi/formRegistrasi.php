@@ -213,33 +213,45 @@
 
 <body>
     <div class="login-box">
-        <h2>Login</h2>
-        <form class="user" method="POST" action="<?php echo base_url('welcome') ?>">
+        <h2>Registrasi</h2>
+        <form class="user" method="POST" action="<?php echo base_url('autentifikasi/registrasi') ?>">
             <div class="user-box">
-                <input type="text" name="username" required="">
+                <input type="text" name="nama" required="">
                 <div class="required">
-                    <?php echo form_error('username') ?>
+                    <?php echo form_error('nama') ?>
                 </div>
-                <label>Username</label>
+                <label>Nama Lengkap</label>
             </div>
             <div class="user-box">
-                <input type="password" name="password" required="">
+                <input type="text" name="email" required="">
                 <div class="required">
-                    <?php echo form_error('password') ?>
+                    <?php echo form_error('email') ?>
+                </div>
+                <label>Alamat Email</label>
+            </div>
+            <div class="user-box">
+                <input type="password" name="password1" required="">
+                <div class="required">
+                    <?php echo form_error('password1') ?>
                 </div>
                 <label>Password</label>
-                <p><a href="<?= base_url('autentifikasi/lupaPassword') ?>">Lupa Password?</a></p>
+            </div>
+            <div class="user-box">
+                <input type="password" name="password2" required="">
+                <div class="required">
+                    <?php echo form_error('password2') ?>
+                </div>
+                <label>Ulangi Password</label>
             </div>
             <button type="submit" id="submit">
                 <span></span>
                 <span></span>
                 <span></span>
                 <span></span>
-                Submit
+                Daftar
             </button>
-
-                <p>Dont have an account? <a href="<?= base_url('autentifikasi/registrasi')?>" class="signUpBtn-link">Register</a></p>      
-    </form>       
+            <p>Sudah punya akun? <a href="<?= base_url('') ?>" class="signInBtn-link">Login</a></p>
+        </form>
     </div>
 </body>
 
