@@ -1,5 +1,5 @@
 <!-- Begin Page Content -->
-<div class="content-body">
+<div class="content-body" id="content">
     <div class="container-fluid">
         <div class="row page-titles">
             <ol class="breadcrumb">

@@ -6,9 +6,9 @@
         <ul class="metismenu" id="menu">
             <li><a href="<?php echo base_url('pegawai/dashboard') ?>" aria-expanded="false">
                     <i class="fas fa-home"></i>
-                    <span class="nav-text">Dashboard</span>
+                    <span class="nav-text">Profil</span>
                 </a>
-                
+
 
             </li>
             <li><a href="<?php echo base_url('pegawai/dataGaji') ?>" class="" aria-expanded="false">
@@ -17,13 +17,13 @@
                 </a>
             </li>
 
-            <li><a href="<?php echo base_url('gantiPassword') ?>" class="" aria-expanded="false">
+            <li><a href="<?php echo base_url('pegawai/gantiPassword') ?>" class="" aria-expanded="false">
                     <i class="fas fa-fw fa-lock"></i>
                     <span class="nav-text">Ganti Password</span>
                 </a>
             </li>
 
-            <li><a href="<?php echo base_url('welcome/logout') ?>" class="" aria-expanded="false">
+            <li><a href="<?php echo base_url('auth/logout') ?>" class="" aria-expanded="false">
                     <i class="fas fa-fw fa-sign-out-alt"></i>
                     <span class="nav-text">Log out</span>
                 </a>

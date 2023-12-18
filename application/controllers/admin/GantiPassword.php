@@ -6,10 +6,10 @@ class GantiPassword extends CI_Controller{
     public function index()
     {
         $data['title'] = "Ganti Password";
-        $this->load->view('templates_pegawai/header', $data);
-        $this->load->view('templates_pegawai/sidebar');
-        $this->load->view('pegawai/formGantiPassword', $data);
-        $this->load->view('templates_pegawai/footer');
+        $this->load->view('templates_admin/header', $data);
+        $this->load->view('templates_admin/sidebar');
+        $this->load->view('formGantiPassword', $data);
+        $this->load->view('templates_admin/footer');
     }
 
     public function gantiPasswordAksi()
@@ -24,19 +24,19 @@ class GantiPassword extends CI_Controller{
             $data = array('password' => md5($passBaru));
             $id = array('id_pegawai' => $this->session->userdata('id_pegawai'));
             $this->penggajianModel->update_data('data_pegawai', $data, $id);
-            $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+            $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-dismissible fade show" role="alert">
                 <strong>Password berhasil diganti!</strong>
                 <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button>
                 </div>');
-            redirect('auth');
+            redirect('welcome');
             
             
         }else{
             $data['title'] = "Ganti Password";
-            $this->load->view('templates_pegawai/header', $data);
-            $this->load->view('templates_pegawai/sidebar');
+            $this->load->view('templates_admin/header', $data);
+            $this->load->view('templates_admin/sidebar');
             $this->load->view('formGantiPassword', $data);
-            $this->load->view('templates_pegawai/footer');
+            $this->load->view('templates_admin/footer');
         }
     }
 }

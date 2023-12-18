@@ -24,6 +24,8 @@ class dataPegawai extends CI_Controller
         $this->load->view('templates_admin/sidebar');
         $this->load->view('admin/dataPegawai', $data);
         $this->load->view('templates_admin/footer');
+
+        
     }
 
     public function tambahData()
@@ -36,6 +38,8 @@ class dataPegawai extends CI_Controller
         $this->load->view('templates_admin/sidebar');
         $this->load->view('admin/formTambahPegawai', $data);
         $this->load->view('templates_admin/footer');
+
+        
     }
 
     public function tambahDataAksi()

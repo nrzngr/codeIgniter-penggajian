@@ -15,7 +15,7 @@
                     <span class="nav-text">Master Data</span>
                 </a>
                 <ul aria-expanded="false">
-                    <li><a href="<?php echo base_url('admin/dataPegawai') ?>">Data Pegawai</a></li>
+                    <li><a class="ajax-link" href="<?php echo base_url('admin/dataPegawai') ?>">Data Pegawai</a></li>
                     <li><a href="<?php echo base_url('admin/dataJabatan') ?>">Data Jabatan</a></li>
 
                 </ul>
@@ -48,7 +48,7 @@
                 </a>
             </li>
 
-            <li><a href="<?php echo base_url('welcome/logout') ?>" class="" aria-expanded="false">
+            <li><a href="<?php echo base_url('autentifikasi/logout') ?>" class="" aria-expanded="false">
                     <i class="fas fa-fw fa-sign-out-alt"></i>
                     <span class="nav-text">Log out</span>
                 </a>
@@ -56,7 +56,7 @@
 
 
             <div class="copyright">
-                <p><strong>NVR Solid Admin</strong> © 2023 All Rights Reserved</p>
+                <p><strong>NRZNGR</strong> © 2023 All Rights Reserved</p>
                 <p class="fs-12">Made with pressure by nrzngr</p>
             </div>
     </div>

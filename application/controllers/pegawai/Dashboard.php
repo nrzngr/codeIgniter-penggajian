@@ -13,7 +13,7 @@ class Dashboard extends CI_Controller
               <span aria-hidden="true">&times;</span>
             </button>
           </div>');
-				redirect('welcome');
+				redirect('auth');
         }
     }
 
@@ -21,8 +21,7 @@ class Dashboard extends CI_Controller
     {
         $data['title'] = "Dashboard";
         $id=$this->session->userdata('id_pegawai');
-        $data['pegawai'] = $this->db->query("SELECT * FROM 
-        data_pegawai WHERE id_pegawai = '$id'")->result();
+        $data['pegawai'] = $this->db->get_where('data_pegawai', ['email' => $this->session->userdata('email')])->row_array();
         $this->load->view('templates_pegawai/header', $data);
         $this->load->view('templates_pegawai/sidebar');
         $this->load->view('pegawai/dashboard', $data);

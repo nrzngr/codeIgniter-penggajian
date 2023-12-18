@@ -15,7 +15,9 @@
     <meta name="format-detection" content="telephone=no">
 
     <!-- PAGE TITLE HERE -->
-    <title><?= $title; ?></title>
+    <title>
+        <?= $title; ?>
+    </title>
 
     <!-- FAVICONS ICON -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -29,10 +31,7 @@
     <link rel="stylesheet" href="<?= base_url() ?>assets/vendor/nouislider/nouislider.min.css">
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-
-
-    <!-- Bootstrap JavaScript -->
+    <script src="<?= base_url() ?>assets/js/sb-admin-2.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
@@ -48,6 +47,12 @@
     <!--*******************
         Preloader start
     ********************-->
+    <div id="preloader">
+        <div class="lds-ripple">
+            <div></div>
+            <div></div>
+        </div>
+    </div>
 
     <!--*******************
         Preloader end
