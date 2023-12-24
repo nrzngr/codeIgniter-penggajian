@@ -27,6 +27,10 @@
         crossorigin="anonymous"></script>
     <link rel="shortcut icon" type="image/png" href="<?= base_url() ?>assets/images/logo.png">
     <link href="<?= base_url() ?>assets/vendor/jquery-nice-select/css/nice-select.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css" />
+
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
+
     <link href="<?= base_url() ?>assets/vendor/owl-carousel/owl.carousel.css" rel="stylesheet">
     <link rel="stylesheet" href="<?= base_url() ?>assets/vendor/nouislider/nouislider.min.css">
     <!-- jQuery -->

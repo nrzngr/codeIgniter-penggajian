@@ -19,7 +19,7 @@
         ***********************************-->
 
 
-
+</div>
 <!--**********************************
         Main wrapper end
     ***********************************-->
@@ -43,11 +43,10 @@
 <script src="<?= base_url() ?>assets/js/dashboard/dashboard-1.js"></script>
 
 <script src="<?= base_url() ?>assets/vendor/owl-carousel/owl.carousel.js"></script>
+
 <script src="<?= base_url() ?>assets/js/custom.min.js"></script>
 <script src="<?= base_url() ?>assets/js/dlabnav-init.js"></script>
 <script src="<?= base_url() ?>assets/js/demo.js"></script>
-<script src="<?= base_url() ?>assets/js/sb-admin-2.min.js"></script>
-<script src="<?= base_url() ?>assets/vendor/jquery.min.js"></script>
 <script src="<?= base_url() ?>assets/js/styleSwitcher.js"></script>
 <script>
     function cardsCenter() {
@@ -88,27 +87,11 @@
         })
     }
 
-    function profil() {
-        $.get("pegawai/dashboard.php", function (data) {
-            $("#content").html(data);
-
-        });
-    }
-
-    function dataGaji() {
-        $.get("pegawai/dataGaji.php", function (data) {
-            $("#content").html(data);
-
-        });
-    }
-
-    function gantiPassword() {
-        $.get("pegawai/formGantiPassword.php", function (data) {
-            $("#content").html(data);
-
-        });
-    }
-
+    jQuery(window).on('load', function () {
+        setTimeout(function () {
+            cardsCenter();
+        }, 1000);
+    });
 
 </script>
 

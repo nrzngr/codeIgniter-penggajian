@@ -14,6 +14,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="card">
+                    <?= $this->session->flashdata('pesan'); ?>
                     <div class="card-header">
                         <h4 class="card-title">
                             <?= $title; ?>

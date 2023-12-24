@@ -3,10 +3,13 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">
-                <?= $title; ?>
-            </h1>
+        <div class="row page-titles col-lg-8 mt-3">
+            <ol class="breadcrumb">
+
+                <li class="breadcrumb-item active"><a href="javascript:void(0)">
+                        <?= $title; ?>
+                    </a></li>
+            </ol>
         </div>
 
 
@@ -26,7 +29,8 @@
                     <div class="row">
 
                         <div class="col-md-4 mb-3 ml-15">
-                            <img style="width: 150px" src="<?php echo base_url('assets/images/' . $pegawai['photo']) ?>">
+                            <img style="width: 150px"
+                                src="<?php echo base_url('assets/images/' . $pegawai['photo']) ?>">
                         </div>
 
                         <div class="col-md-7">

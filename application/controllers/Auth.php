@@ -131,8 +131,8 @@ class Auth extends CI_Controller
                 'tanggal_masuk' => date("Y-m-d"),
                 'status' => 'Pegawai Tetap',
                 'photo' => 'default.jpg',
-                'hak_akses' => 1,
-                'is_active' => 1,
+                'hak_akses' => 2,
+                'is_active' => 0,
                 'email' => htmlspecialchars($email),
 
 
@@ -145,9 +145,10 @@ class Auth extends CI_Controller
                 'date_created' => time(),
             ];
 
-            $this->ModelUser->simpanData($data); //menggunakan model
+            // $this->ModelUser->simpanData($data); //menggunakan model
+            $this->ModelUser->simpanData($data);
             $this->ModelUser->simpanToken($user_token);
-            // $this->_sendEmail($token, 'verify');
+            $this->_sendEmail($token, 'verify');
 
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Selamat!! akun member anda sudah dibuat. Silahkan Aktivasi Akun anda
             </div>');
@@ -155,6 +156,45 @@ class Auth extends CI_Controller
         }
     }
 
+    private function _sendEmail($token, $type)
+    {
+        ini_set('SMTP', 'smtp.googlemail.com');
+        ini_set('smtp_port', 465); // Change this to the appropriate port
+
+        $config = [
+            'protocol' => 'smtp',
+            'smtp_host' => 'ssl://smtp.googlemail.com',
+            'smtp_user' => '12220290@bsi.ac.id',
+            'smtp_pass' => 'kidut255',
+            'smtp_port' => 465,
+            'mailtype' => 'html',
+            'charset' => 'utf-8',
+            'newline' => "\r\n",
+        ];
+
+        $this->load->library('email', $config);
+        $this->email->initialize($config);  //tambahkan baris ini
+        $this->email->from('12220290@bsi.ac.id', 'Penggajian');
+        $this->email->to($this->input->post('email'));
+
+        if ($type == 'verify') {
+            $this->email->subject('Verifikasi Akun');
+            $this->email->message('klik link berikut untuk verifikasi akun anda : <a href="' . base_url() . 'autentifikasi/verify?email=' . $this->input->post('email') . '&token=' . urlencode($token) . '"> Aktifkan Disini</a>');
+
+        } else if ($type == 'forgot') {
+            $this->email->subject('Reset Password');
+            $this->email->message('Klik link berikut untuk reset password anda: <a href="' . base_url() . 'autentifikasi/resetpassword?email=' . $this->input->post('email') . '&token=' . urlencode($token) . '">Reset Password</a>');
+
+        }
+
+        if ($this->email->send()) {
+            return true;
+        } else {
+            echo $this->email->print_debugger();
+            die;
+        }
+    }
+    
     private function _login()
     {
         $email    = htmlspecialchars($this->input->post('email', true));
@@ -204,7 +244,7 @@ class Auth extends CI_Controller
 
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Anda berhasil logout
             </div>');
-            redirect('auth');
+        redirect('auth');
     }
 
 }

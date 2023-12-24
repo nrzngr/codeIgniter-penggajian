@@ -1,44 +1,55 @@
 <?php
 
-class GantiPassword extends CI_Controller{
+class GantiPassword extends CI_Controller
+{
 
 
     public function index()
     {
-        $data['title'] = "Ganti Password";
-        $this->load->view('templates_pegawai/header', $data);
-        $this->load->view('templates_pegawai/sidebar');
-        $this->load->view('pegawai/formGantiPassword', $data);
-        $this->load->view('templates_pegawai/footer');
-    }
+        $data['title']   = "Ganti Password";
+        $data['pegawai'] = $this->db->get_where('data_pegawai', ['email' => $this->session->userdata('email')])->row_array();
 
-    public function gantiPasswordAksi()
-    {
-        $passBaru = $this->input->post('passBaru');
-        $ulangPass = $this->input->post('ulangPass');
+        $this->form_validation->set_rules('current_password', 'Password saat ini', 'required|trim');
 
-        $this->form_validation->set_rules('passBaru','password baru','required|matches[ulangPass]');
-        $this->form_validation->set_rules('ulangPass','ulangi password','required');
+        $this->form_validation->set_rules('new_password1', 'Password Baru', 'required|trim|min_length[3]|matches[new_password2]');
 
-        if($this->form_validation->run() != FALSE) {
-            $data = array('password' => md5($passBaru));
-            $id = array('id_pegawai' => $this->session->userdata('id_pegawai'));
-            $this->penggajianModel->update_data('data_pegawai', $data, $id);
-            $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
-                <strong>Password berhasil diganti!</strong>
-                <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button>
-                </div>');
-            redirect('auth');
-            
-            
-        }else{
-            $data['title'] = "Ganti Password";
+        $this->form_validation->set_rules('new_password2', 'Ulangi password baru', 'required|trim|min_length[3]|matches[new_password1]');
+
+        if ($this->form_validation->run() == false) {
+
             $this->load->view('templates_pegawai/header', $data);
             $this->load->view('templates_pegawai/sidebar');
-            $this->load->view('formGantiPassword', $data);
+            $this->load->view('pegawai/formGantiPassword', $data);
             $this->load->view('templates_pegawai/footer');
+        } else {
+            $current_password = $this->input->post('current_password');
+            $new_password = $this->input->post('new_password1');
+
+            if (!password_verify($current_password, $data['pegawai']['password'])) {
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password salah
+            </div>');
+                redirect('pegawai/gantiPassword');
+            } else {
+                if($current_password == $new_password){
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password tidak boleh sama dengan sebelumnya
+            </div>');
+                redirect('pegawai/gantiPassword');
+                } else {
+                    $password_hash = password_hash($new_password, PASSWORD_DEFAULT);
+
+                    $this->db->set('password', $password_hash);
+                    $this->db->where('email', $this->session->userdata('email'));
+                    $this->db->update('data_pegawai');
+
+                    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Password berhasil diubah
+            </div>');
+                redirect('pegawai/gantiPassword');
+                }
+            }
         }
     }
+
+   
 }
 
 ?>

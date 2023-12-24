@@ -48,7 +48,7 @@
                 </a>
             </li>
 
-            <li><a href="<?php echo base_url('autentifikasi/logout') ?>" class="" aria-expanded="false">
+            <li><a href="<?php echo base_url('auth/logout') ?>" class="" aria-expanded="false">
                     <i class="fas fa-fw fa-sign-out-alt"></i>
                     <span class="nav-text">Log out</span>
                 </a>
