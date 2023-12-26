@@ -6,6 +6,31 @@ class PenggajianModel extends CI_Model
         return $this->db->get($table);
     }
 
+    public function showDataPegawai($limit, $start, $keyword = null)
+    {
+        if ($keyword) {
+            $this->db->like('nama_pegawai', $keyword);
+            $this->db->or_like('email', $keyword);
+            $this->db->or_like('jabatan', $keyword);
+        }
+        return $this->db->get('data_pegawai', $limit, $start)->result_array();
+    }
+
+    public function showDataJabatan($limit, $start, $keyword = null)
+    {
+        if ($keyword) {
+            $this->db->like('nama_jabatan', $keyword);
+        }
+        return $this->db->get('data_jabatan', $limit, $start)->result_array();
+    }
+
+    
+
+    public function countPegawai()
+    {
+        return $this->db->get('data_pegawai')->num_rows();
+    }
+
     public function insert_data($data, $table)
     {
         $this->db->insert($table, $data);
@@ -35,20 +60,20 @@ class PenggajianModel extends CI_Model
         $username = set_value('username');
         $password = set_value('password');
 
-        $result = $this->db->where('username',$username)
-        ->where('password',md5($password))
-        ->limit(1)
-        ->get('data_pegawai');
-        if ($result->num_rows()>0){
+        $result = $this->db->where('username', $username)
+            ->where('password', md5($password))
+            ->limit(1)
+            ->get('data_pegawai');
+        if ($result->num_rows() > 0) {
             return $result->row();
-        }else{
+        } else {
             return FALSE;
         }
     }
 
     public function simpanToken($data = null)
     {
-    $this->db->insert('user_token', $data);
+        $this->db->insert('user_token', $data);
     }
 
     public function simpanData($data = null)
