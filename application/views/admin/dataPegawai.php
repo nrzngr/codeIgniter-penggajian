@@ -23,15 +23,30 @@
                                 class="btn btn-success">Tambah Data</button></a>
                     </div>
 
+                    <div class="row">
+                        <div class="col-md-4">
+                            <form action="<?=base_url('admin/DataPegawai')?>" method="post">
+                                <div class="input-group mb-3 ml-5">
+                                    <input type="text" class="form-control" placeholder="Cari pegawai" name="keyword">
+                                    <div class="input-group-append">
+                                        <input  class="btn btn-primary" type="submit" name="submit">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
                     <div class="card-body">
 
                         <div class="table-responsive">
+                        
                             <table class="table table-responsive-md">
                                 <thead>
                                     <tr>
                                         <th style="width:80px;"><strong>No</strong></th>
                                         <th><strong>NIK</strong></th>
                                         <th><strong>Nama Pegawai</strong></th>
+                                        <th><strong>Email</strong></th>
                                         <th><strong>Jenis Kelamin</strong></th>
                                         <th><strong>Jabatan</strong></th>
                                         <th><strong>Tanggal Masuk</strong></th>
@@ -44,33 +59,45 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php $no = 1;
+                                    <?php if (empty($pegawai)): ?>
+                                        <tr>
+                                            <td colspan="11">
+                                                <div class="alert alert-danger" role="alert">
+                                                    Data tidak ditemukan
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    <?php endif; ?>
+                                    <?php
                                     foreach ($pegawai as $p): ?>
                                         <tr>
                                             <td>
-                                                <?= $no++; ?>
+                                                <?= ++$start; ?>
                                             </td>
                                             <td>
-                                                <?= $p->nik; ?>
+                                                <?= $p['nik']; ?>
                                             </td>
                                             <td>
-                                                <?= $p->nama_pegawai; ?>
+                                                <?= $p['nama_pegawai']; ?>
                                             </td>
                                             <td>
-                                                <?= $p->jenis_kelamin; ?>
+                                                <?= $p['email']; ?>
                                             </td>
                                             <td>
-                                                <?= $p->jabatan; ?>
+                                                <?= $p['jenis_kelamin']; ?>
                                             </td>
                                             <td>
-                                                <?= $p->tanggal_masuk; ?>
+                                                <?= $p['jabatan']; ?>
                                             </td>
                                             <td>
-                                                <?= $p->status; ?>
+                                                <?= $p['tanggal_masuk']; ?>
                                             </td>
-                                            <td><img src="<?= base_url() . 'assets/images/' . $p->photo ?>" width="75px">
+                                            <td>
+                                                <?= $p['status']; ?>
                                             </td>
-                                            <?php if ($p->hak_akses == '1') { ?>
+                                            <td><img src="<?= base_url() . 'assets/images/' . $p['photo'] ?>" width="75px">
+                                            </td>
+                                            <?php if ($p['hak_akses'] == '1') { ?>
                                                 <td>Admin</td>
                                             <?php } else { ?>
                                                 <td>Pegawai</td>
@@ -92,9 +119,9 @@
                                                     </button>
                                                     <div class="dropdown-menu">
                                                         <a class="dropdown-item"
-                                                            href="<?php echo base_url('admin/dataPegawai/updateData/' . $p->id_pegawai) ?>">Edit</a>
+                                                            href="<?php echo base_url('admin/dataPegawai/updateData/' . $p['id_pegawai']) ?>">Edit</a>
                                                         <a class="dropdown-item" onclick="return confirm('Yakin Hapus?')"
-                                                            href="<?php echo base_url('admin/dataPegawai/deleteData/' . $p->id_pegawai) ?>">Delete</a>
+                                                            href="<?php echo base_url('admin/dataPegawai/deleteData/' . $p['id_pegawai']) ?>">Delete</a>
                                                     </div>
                                                 </div>
 
@@ -104,6 +131,8 @@
 
                                 </tbody>
                             </table>
+
+                            <?= $this->pagination->create_links(); ?>
                         </div>
                     </div>
                 </div>

@@ -65,7 +65,7 @@
                                                 <?= form_error('password2', '<small class="text-danger pl-3">', '</small>') ?>
                                         </div>
                                     </div>
-                                    <button type="submit" class="btn btn-primary btn-user btn-block">
+                                    <button type="submit" class="btn button btn-primary btn-user btn-block">
                                         Register Account
                                     </button>
                                     <hr>
@@ -73,7 +73,7 @@
                                 </form>
                                 <hr>
                                 <div class="text-center">
-                                    <a class="small" href="forgot-password.html">Forgot Password?</a>
+                                    <a class="small" href="<?= base_url('auth/forgotPassword')?>">Forgot Password?</a>
                                 </div>
                                 <div class="text-center">
                                     <a class="small" href="<?= base_url('auth') ?>">Already have an account? Login!</a>
@@ -89,3 +89,5 @@
 
 
 </div>
+
+

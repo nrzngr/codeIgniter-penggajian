@@ -23,6 +23,19 @@
                                 class="btn btn-success">Tambah Data</button></a>
                     </div>
 
+                    <div class="row">
+                        <div class="col-md-4">
+                            <form action="<?= base_url('admin/DataJabatan') ?>" method="post">
+                                <div class="input-group mb-3 ml-5">
+                                    <input type="text" class="form-control" placeholder="Cari jabatan" name="keyword">
+                                    <div class="input-group-append">
+                                        <input class="btn btn-primary" type="submit" name="submit">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
                     <div class="card-body">
 
                         <div class="table-responsive">
@@ -39,30 +52,39 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <?php if (empty($jabatan)): ?>
+                                        <tr>
+                                            <td colspan="11">
+                                                <div class="alert alert-danger" role="alert">
+                                                    Data tidak ditemukan
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    <?php endif; ?>
                                     <?php $no = 1;
                                     foreach ($jabatan as $j): ?>
                                         <tr>
                                             <td>
-                                                <?= $no++; ?>
+                                                <?= ++$start; ?>
                                             </td>
                                             <td>
-                                                <?= $j->nama_jabatan; ?>
-                                            </td>
-                                            <td>
-                                                Rp.
-                                                <?= number_format($j->gaji_pokok, 0, ',', '.'); ?>
+                                                <?= $j['nama_jabatan']; ?>
                                             </td>
                                             <td>
                                                 Rp.
-                                                <?= number_format($j->tj_transport, 0, ',', '.'); ?>
+                                                <?= number_format($j['gaji_pokok'], 0, ',', '.'); ?>
                                             </td>
                                             <td>
                                                 Rp.
-                                                <?= number_format($j->uang_makan, 0, ',', '.'); ?>
+                                                <?= number_format($j['tj_transport'], 0, ',', '.'); ?>
                                             </td>
                                             <td>
                                                 Rp.
-                                                <?= number_format($j->gaji_pokok + $j->tj_transport + $j->uang_makan, 0, ',', '.'); ?>
+                                                <?= number_format($j['uang_makan'], 0, ',', '.'); ?>
+                                            </td>
+                                            <td>
+                                                Rp.
+                                                <?= number_format($j['gaji_pokok'] + $j['tj_transport'] + $j['uang_makan'], 0, ',', '.'); ?>
                                             </td>
                                             <td>
                                                 <div class="dropdown">
@@ -80,9 +102,9 @@
                                                     </button>
                                                     <div class="dropdown-menu">
                                                         <a class="dropdown-item"
-                                                            href="<?php echo base_url('admin/dataJabatan/updateData/' . $j->id_jabatan) ?>">Edit</a>
+                                                            href="<?php echo base_url('admin/dataJabatan/updateData/' . $j['id_jabatan']) ?>">Edit</a>
                                                         <a class="dropdown-item" onclick="return confirm('Yakin Hapus?')"
-                                                            href="<?php echo base_url('admin/dataJabatan/deleteData/' . $j->id_jabatan) ?>">Delete</a>
+                                                            href="<?php echo base_url('admin/dataJabatan/deleteData/' . $j['id_jabatan']) ?>">Delete</a>
                                                     </div>
                                                 </div>
 

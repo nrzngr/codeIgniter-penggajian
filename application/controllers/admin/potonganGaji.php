@@ -52,12 +52,12 @@ class PotonganGaji extends CI_Controller
             );
 
             $this->penggajianModel->insert_data($data, 'potongan_gaji');
-            $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-dismissible fade show" role="alert">
-            <strong>Data berhasil ditambahkan!</strong>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
+            $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-dismissible fade show">
+            <svg viewbox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="me-2"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>	
+            Data  <strong>berhasil ditambahkan!</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="btn-close">
             </button>
-          </div>');
+        </div>');
             redirect('admin/potonganGaji');
         }
     }
@@ -94,12 +94,12 @@ class PotonganGaji extends CI_Controller
             );
 
             $this->penggajianModel->update_data('potongan_gaji', $data, $where);
-            $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-dismissible fade show" role="alert">
-            <strong>Data berhasil diupdate!</strong>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
+            $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-dismissible fade show">
+            <svg viewbox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="me-2"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>	
+            Data  <strong>berhasil diupdate!</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="btn-close">
             </button>
-          </div>');
+        </div>');
             redirect('admin/potonganGaji');
         }
     }
@@ -114,12 +114,12 @@ class PotonganGaji extends CI_Controller
     {
         $where = array('id' => $id);
         $this->penggajianModel->delete_data($where, 'potongan_gaji');
-        $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-dismissible fade show" role="alert">
-            <strong>Data berhasil dihapus!</strong>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>');
+        $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-dismissible fade show">
+        <svg viewbox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="me-2"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>	
+        Data  <strong>berhasil dihapus!</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="btn-close">
+        </button>
+    </div>');
         redirect('admin/potonganGaji');
     }
 }

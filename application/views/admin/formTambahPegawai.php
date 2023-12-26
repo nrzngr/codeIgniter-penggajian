@@ -30,6 +30,12 @@
                     </div>
 
                     <div class="form-group input-primary">
+                        <label>Email</label>
+                        <input type="email" name="email" class="form-control">
+                        <?= form_error('email', '<div class="text-small text-danger"></div>') ?>
+                    </div>
+
+                    <div class="form-group input-primary">
                         <label>Username</label>
                         <input type="text" name="username" class="form-control">
                         <?= form_error('username', '<div class="text-small text-danger"></div>') ?>

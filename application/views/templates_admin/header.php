@@ -30,6 +30,7 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css" />
 
     <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
+    <link href="<?= base_url() ?> assets/vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
 
     <link href="<?= base_url() ?>assets/vendor/owl-carousel/owl.carousel.css" rel="stylesheet">
     <link rel="stylesheet" href="<?= base_url() ?>assets/vendor/nouislider/nouislider.min.css">

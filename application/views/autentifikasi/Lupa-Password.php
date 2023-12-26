@@ -11,17 +11,17 @@
                                 <div class="text-center">
                                     <h1 class="h4 text-gray-900 mb-4">Anda Lupa Password?</h1>
                                 </div>
-                                <?= $this->session->flashdata('pesan'); ?>
-                                <form class="user" method="post" action="<?= base_url('autentifikasi/lupaPassword'); ?>">
+                                <?= $this->session->flashdata('message'); ?>
+                                <form class="user" method="post" action="<?= base_url('auth/forgotPassword'); ?>">
                             <div class="form-group">
                                 <input type="text" class="form-control form-control-user" value="<?= set_value('email'); ?>" id="email" placeholder="Alamat Email" name="email">
                                 <?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
-                            <button type="submit" class="btn btn-primary btn-user btn-block">Reset Password</button>
+                            <button type="submit" class="btn button btn-primary btn-user btn-block">Reset Password</button>
                             </form>
                             <hr>
                             <div class="text-center">
-                                <a href="<?= base_url('autentifikasi'); ?>">Kembali ke Halaman Login</a>
+                                <a href="<?= base_url('auth'); ?>">Kembali ke Halaman Login</a>
                             </div>
                             </div>
                         </div>
@@ -31,3 +31,4 @@
         </div>
     </div>
 </div>
+

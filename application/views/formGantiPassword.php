@@ -1,38 +1,43 @@
-<!-- Begin Page Content -->
-<div class="content-body">
-    <div class="container-fluid">
-
-        <!-- Page Heading -->
-        <div class="row page-titles">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item active"><a href="javascript:void(0)">
-                        <?= $title; ?>
-                    </a></li>
-            </ol>
-        </div>
-
-        <div class="card" style="width: 50%">
-            <div class="card-body">
-                <form method="POST" action="<?php echo base_url('gantiPassword/gantiPasswordAksi') ?>">
-
-                    <div class="form-group input-primary">
-                        <label>Password Baru</label>
-                        <input type="password" name="passBaru" class="form-control">
-                        <?php echo form_error('passBaru', '<div class="text-small text-danger"></div>') ?>
+<div class="container">
+    <!-- Outer Row -->
+    <div class="row justify-content-center">
+        <div class="col-lg-7">
+            <div class="card o-hidden border-0 shadow-lg my-5">
+                <div class="card-body p-0">
+                    <!-- Nested Row within Card Body -->
+                    <div class="row">
+                        <div class="col-lg">
+                            <div class="p-5">
+                                <div class="text-center">
+                                    <h1 class="h4 text-gray-900">Ganti Password untuk </h1>
+                                    <h5 class="mb-4">
+                                        <?= $this->session->userdata('reset_email') ?>
+                                    </h5>
+                                </div>
+                                <?= $this->session->flashdata('message'); ?>
+                                <form class="user" method="post" action="<?= base_url('auth/changePassword'); ?>">
+                                    <div class="form-group">
+                                        <input type="password" class="form-control form-control-user" id="password"
+                                            placeholder="Password Baru" name="password">
+                                        <?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" class="form-control form-control-user" id="password2"
+                                            placeholder="Ulangi Password baru" name="password2">
+                                        <?= form_error('password2', '<small class="text-danger pl-3">', '</small>'); ?>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary btn-user btn-block">Ganti Password</button>
+                                </form>
+                                <hr>
+                                <div class="text-center">
+                                    <a href="<?= base_url('auth'); ?>">Kembali ke Halaman Login</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-
-                    <div class="form-group input-primary">
-                        <label>Ulangi Password Baru</label>
-                        <input type="password" name="ulangPass" class="form-control">
-                        <?php echo form_error('ulangPass', '<div class="text-small text-danger"></div>') ?>
-                    </div>
-
-                    <button type="submit" class="btn btn-success mt-3">Simpan</button>
-
-                </form>
-
+                </div>
             </div>
         </div>
-
     </div>
 </div>
+
